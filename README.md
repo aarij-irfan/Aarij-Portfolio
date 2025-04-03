@@ -70,8 +70,8 @@ This portfolio is built for deployment on **[Vercel]([https://vercel.com/](https
 
 ## 📬 Contact
 
-- 📧 Email: [your.email@example.com](mailto:aarijirfan.105@gmail.com)
-- 💼 LinkedIn: [linkedin.com/in/yourprofile](https://www.linkedin.com/in/aarij-irfan-b40a07280/)
+- 📧 Email: [aarijirfan.105@gmail.com](mailto:aarijirfan.105@gmail.com)
+- 💼 LinkedIn: [linkedin.com/in/aarij-irfan/](https://www.linkedin.com/in/aarij-irfan-b40a07280/)
 - 🌍 Website: [aarijirfan.dev](https://aarij-irfan.vercel.app/)
 
 ---
