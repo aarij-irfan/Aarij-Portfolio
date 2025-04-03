@@ -77,13 +77,5 @@ This portfolio is built for deployment on **[Vercel]([https://vercel.com/](https
 ---
 
 > Made with ❤️ using Next.js and Tailwind CSS
-```
 
 ---
-
-Let me know if:
-- You want to include a section for **projects** or **testimonials**
-- You want me to add **badges** (like GitHub stars, Vercel deployment badge, etc.)
-- You’d like to include the **preview image** or want help designing one
-
-We can polish this even further!
