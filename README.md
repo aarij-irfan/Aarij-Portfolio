@@ -64,7 +64,7 @@ Hi! I’m **Aarij Irfan**, a versatile software engineer passionate about crafti
 
 ## 📤 Deployment
 
-This portfolio is built for deployment on **[Vercel]([https://vercel.com/](https://aarij-irfan.vercel.app/))**:
+This portfolio is built for deployment on **[Vercel]([https://aarij-irfan.vercel.app/](https://aarij-irfan.vercel.app/)**:
 
 ---
 
