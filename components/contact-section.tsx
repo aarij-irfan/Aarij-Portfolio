@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
-import { Github, Linkedin, Mail, Send, Twitter } from "lucide-react"
+import { Github, Linkedin, Mail, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -42,7 +42,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-b from-black to-gray-900">
+    <section id="contact" className="py-24 bg-gradient-to-b from-black to-gray-900">
       <div className="container mx-auto px-4">
         <div ref={ref} className="max-w-5xl mx-auto">
           <motion.div
@@ -73,7 +73,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Email</p>
-                    <p className="font-medium">aarij.irfan@example.com</p>
+                    <p className="font-medium">aarij@gen-tsolutions.com</p>
                   </div>
                 </div>
 
@@ -83,7 +83,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">LinkedIn</p>
-                    <p className="font-medium">linkedin.com/in/aarijirfan</p>
+                    <p className="font-medium">linkedin.com/in/aarij-irfan</p>
                   </div>
                 </div>
 
@@ -93,17 +93,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">GitHub</p>
-                    <p className="font-medium">github.com/aarijirfan</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="bg-gray-800 p-3 rounded-full">
-                    <Twitter className="h-6 w-6 text-purple-400" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-400">Twitter</p>
-                    <p className="font-medium">twitter.com/aarijirfan</p>
+                    <p className="font-medium">github.com/aarij-irfan</p>
                   </div>
                 </div>
               </div>
@@ -111,16 +101,26 @@ export default function ContactSection() {
               <div className="mt-12">
                 <h4 className="text-xl font-medium mb-4">Let's Connect</h4>
                 <div className="flex gap-4">
-                  <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors">
+                  <a
+                    href="https://www.linkedin.com/in/aarij-irfan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors"
+                  >
                     <Linkedin className="h-5 w-5" />
                   </a>
-                  <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors">
+                  <a
+                    href="https://github.com/aarij-irfan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors"
+                  >
                     <Github className="h-5 w-5" />
                   </a>
-                  <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors">
-                    <Twitter className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors">
+                  <a
+                    href="mailto:aarij@gen-tsolutions.com"
+                    className="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors"
+                  >
                     <Mail className="h-5 w-5" />
                   </a>
                 </div>
@@ -221,4 +221,3 @@ export default function ContactSection() {
     </section>
   )
 }
-

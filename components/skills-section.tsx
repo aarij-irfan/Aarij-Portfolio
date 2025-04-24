@@ -23,7 +23,7 @@ export default function SkillsSection() {
   const isInView = useInView(ref, { once: false, amount: 0.2 })
 
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-900 to-black">
+    <section id="skills" className="py-24 bg-gradient-to-b from-gray-900 to-black">
       <div className="container mx-auto px-4">
         <div ref={ref} className="max-w-4xl mx-auto">
           <motion.h2
@@ -90,4 +90,3 @@ export default function SkillsSection() {
     </section>
   )
 }
-

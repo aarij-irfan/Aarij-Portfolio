@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowDown, ExternalLink, ChevronRight, Github, Linkedin, Twitter } from "lucide-react"
+import { ArrowDown, ExternalLink, ChevronRight, Github, Linkedin } from "lucide-react"
+import Link from "next/link"
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -180,8 +181,9 @@ export default function HeroSection() {
       >
         {/* Name with letter animation */}
         <div className="mb-8 overflow-hidden">
+          <h1 className="sr-only">Aarij Irfan - Software Engineer</h1>
           <div className="flex items-center justify-center overflow-hidden">
-            {["A", "A", "R", "I", "J", "_","I", "R", "F","A", "N"].map((letter, i) => (
+            {["A", "A", "R", "I", "J"].map((letter, i) => (
               <motion.div
                 key={i}
                 custom={i}
@@ -211,6 +213,16 @@ export default function HeroSection() {
               </motion.div>
             ))}
           </div>
+
+          {/* Last name */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="text-center mt-2"
+          >
+            <span className="text-3xl md:text-4xl font-light tracking-wide text-white/80">IRFAN</span>
+          </motion.div>
         </div>
 
         {/* Animated line */}
@@ -291,39 +303,72 @@ export default function HeroSection() {
           transition={{ delay: 2.5, duration: 0.8 }}
           className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4"
         >
-          <Button
-            size="lg"
-            className="group bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            View My Work
-            <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button>
+          <Link href="#projects">
+            <Button
+              size="lg"
+              className="group bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View My Work
+              <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
 
-          <Button
-            size="lg"
-            variant="outline"
-            className="group border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Contact Me
-            <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button>
+          <Link href="#contact">
+            <Button
+              size="lg"
+              variant="outline"
+              className="group border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contact Me
+              <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
         </motion.div>
-      </motion.div>
 
-      {/* Scroll indicator - only one now */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 3.2, duration: 0.8 }}
-      >
-        <span className="text-sm font-medium text-white/70">Scroll to explore</span>
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}>
-          <ArrowDown className="h-5 w-5 text-white/70" />
+        {/* Social Links */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 3, duration: 0.8 }}
+          className="absolute bottom-20 flex space-x-4"
+        >
+          {[
+            { icon: Github, href: "https://github.com/aarij-irfan" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/aarij-irfan" },
+          ].map((social, i) => (
+            <motion.a
+              key={i}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/80 transition-colors hover:bg-white/20 hover:text-white"
+              whileHover={{
+                scale: 1.2,
+                rotate: 5,
+                backgroundColor: "rgba(168, 85, 247, 0.3)",
+              }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <social.icon className="h-5 w-5" />
+            </motion.a>
+          ))}
+        </motion.div>
+
+        {/* Scroll indicator - only one now */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 3.2, duration: 0.8 }}
+        >
+          <span className="text-sm font-medium text-white/70">Scroll to explore</span>
+          <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}>
+            <ArrowDown className="h-5 w-5 text-white/70" />
+          </motion.div>
         </motion.div>
       </motion.div>
     </div>
@@ -358,4 +403,3 @@ function TypewriterEffect({ text }: { text: string }) {
     </div>
   )
 }
-

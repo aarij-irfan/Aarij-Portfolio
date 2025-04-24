@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
-import { Menu, X, Github, Linkedin, Twitter } from "lucide-react"
+import { Menu, X, Github, Linkedin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState("home")
 
   // Handle scroll effect
   useEffect(() => {
@@ -17,6 +18,25 @@ export default function Navbar() {
         setScrolled(true)
       } else {
         setScrolled(false)
+      }
+
+      // Update active section based on scroll position
+      const sections = ["home", "about", "skills", "projects", "contact"]
+      const sectionElements = sections.map((id) =>
+        id === "home" ? document.documentElement : document.getElementById(id),
+      )
+
+      const currentSectionIndex = sectionElements.findIndex((section, index) => {
+        if (!section) return false
+
+        const rect = section.getBoundingClientRect()
+        const offset = index === 0 ? window.innerHeight * 0.5 : 200
+
+        return rect.top <= offset && rect.bottom >= offset
+      })
+
+      if (currentSectionIndex !== -1) {
+        setActiveSection(sections[currentSectionIndex])
       }
     }
 
@@ -91,9 +111,8 @@ export default function Navbar() {
   ]
 
   const socialLinks = [
-    { name: "GitHub", icon: Github, href: "#" },
-    { name: "LinkedIn", icon: Linkedin, href: "#" },
-    { name: "Twitter", icon: Twitter, href: "#" },
+    { name: "GitHub", icon: Github, href: "https://github.com/aarij-irfan" },
+    { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/aarij-irfan" },
   ]
 
   return (
@@ -140,10 +159,21 @@ export default function Navbar() {
                   <motion.li key={link.name} custom={i} variants={linkVariants} initial="hidden" animate="visible">
                     <Link
                       href={link.href}
-                      className="group relative text-sm font-medium text-white/80 transition-colors hover:text-white"
+                      className={`group relative text-sm font-medium transition-colors hover:text-white ${
+                        activeSection === link.href.replace("#", "") || (activeSection === "home" && link.href === "#")
+                          ? "text-white"
+                          : "text-white/70"
+                      }`}
                     >
                       {link.name}
-                      <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full" />
+                      <span
+                        className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full ${
+                          activeSection === link.href.replace("#", "") ||
+                          (activeSection === "home" && link.href === "#")
+                            ? "w-full"
+                            : "w-0"
+                        }`}
+                      />
                     </Link>
                   </motion.li>
                 ))}
@@ -269,13 +299,15 @@ export default function Navbar() {
               </motion.div>
 
               <motion.div variants={mobileLinkVariants} custom={navLinks.length + 2} className="mt-12 text-center">
-                <Button
-                  size="lg"
-                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Contact Me
-                </Button>
+                <Link href="#contact">
+                  <Button
+                    size="lg"
+                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Contact Me
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>
@@ -284,4 +316,3 @@ export default function Navbar() {
     </>
   )
 }
-
